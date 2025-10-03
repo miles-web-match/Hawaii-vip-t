@@ -7,6 +7,8 @@ if (!rootEl) {
   throw new Error('Root element #root が見つかりません。index.html を確認してください。');
 }
 
+<!-- deploy trigger -->
+
 ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
     <App />
