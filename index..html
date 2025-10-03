@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hawaii VIP Concierge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+      
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: #F8F5F0; /* Light beige background */
+        font-family: 'Noto Sans JP', sans-serif;
+        color: #4F463F; /* Dark brown text */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .font-serif {
+        font-family: 'Playfair Display', serif;
+      }
+
+      /* Hero text animation */
+      .hero-text-animation {
+        opacity: 0;
+        animation: fadeInUp 1.5s ease-out 0.5s forwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* Scroll-triggered fade-in animation */
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Scroll down indicator */
+      .scroll-down {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 24px;
+        height: 40px;
+        border: 2px solid #4F463F; /* Dark brown border */
+        border-radius: 20px;
+      }
+      .scroll-down::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        width: 4px;
+        height: 8px;
+        background: #4F463F; /* Dark brown dot */
+        border-radius: 2px;
+        animation: scroll-anim 2s infinite;
+      }
+
+      @keyframes scroll-anim {
+        0% {
+          transform: translate(-50%, 0);
+          opacity: 0;
+        }
+        40% {
+          opacity: 1;
+        }
+        80% {
+          transform: translate(-50%, 12px);
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

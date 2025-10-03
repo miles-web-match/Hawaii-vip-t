@@ -1,0 +1,5 @@
+{
+  "name": "Hawaii VIP Concierge",
+  "description": "Hawaii VIP Conciergeの公式サイト。至高のハワイ体験を、あなただけに。オーダーメイドツアー、プライベート送迎、特別予約代行など、最高のサービスをご提供します。",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,423 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+// --- i18n CONTENT ---
+const translations = {
+    en: {
+        // Header
+        nav_service: 'SERVICE',
+        nav_accommodations: 'ACCOMMODATIONS',
+        nav_about: 'ABOUT US',
+        nav_company: 'COMPANY',
+        nav_contact: 'CONTACT',
+        // Hero
+        hero_title_line1: 'The Ultimate Hawaii Experience,',
+        hero_title_line2: 'Exclusively for You.',
+        // Service
+        service_title: 'SERVICE',
+        service_subtitle: 'Our Services',
+        service1_title: 'Bespoke Tours',
+        service1_desc: 'We design one-of-a-kind custom tours tailored to your desires, from private sightseeing to special activities.',
+        service2_title: 'Private Transport',
+        service2_desc: 'Luxury private transport services for everything from airport transfers to sightseeing. We also arrange for private jets and helicopters.',
+        service3_title: 'VIP Reservations',
+        service3_desc: 'We secure reservations for you at popular, hard-to-book restaurants, arrange for private chefs, and book golf courses.',
+        // Accommodations
+        accommodations_title: 'ACCOMMODATIONS',
+        accommodations_subtitle: 'Our Rooms',
+        room1_occupancy: '2 adults | 1 child below 7',
+        room1_name: 'De Luxe Room',
+        room1_price: 'from $189 a night',
+        room2_occupancy: '2 adults | 1 child below 7',
+        room2_name: 'De Luxe Sea View',
+        room2_price: 'from $209 a night',
+        room3_occupancy: '4 adults | 2 children below 7',
+        room3_name: 'The Wellhall Family Suite',
+        room3_price: 'from $399 a night',
+        // About
+        about_title: 'ABOUT US',
+        about_subtitle: 'Who We Are',
+        about_desc_p1: 'We are a VIP concierge service dedicated to making your stay in Hawaii the best it can be.',
+        about_desc_p2: 'Leveraging our extensive knowledge and network, we provide top-tier personal services to bring each client\'s ideal vision to life.',
+        // Company
+        company_title: 'COMPANY',
+        company_subtitle: 'Our Profile',
+        company_name_label: 'Company Name',
+        company_name_value: 'Hawaii VIP Concierge',
+        company_location_label: 'Location',
+        company_location_value: '123 Kalakaua Ave, Honolulu, HI 96815',
+        company_ceo_label: 'CEO',
+        company_ceo_value: 'Taro Yamada',
+        company_business_label: 'Business',
+        company_business_value: 'VIP Concierge Services',
+        // Contact
+        contact_title: 'CONTACT',
+        contact_subtitle: 'Get In Touch',
+        contact_desc: 'For travel consultations, special requests, or any inquiries, please feel free to contact us.',
+        contact_form_name: 'Name',
+        contact_form_email: 'Email',
+        contact_form_message: 'Message',
+        contact_form_submit: 'Submit',
+        // Footer
+        footer_copyright: 'All rights reserved.'
+    },
+    ja: {
+        // Header
+        nav_service: 'サービス',
+        nav_accommodations: '宿泊施設',
+        nav_about: '私たちについて',
+        nav_company: '会社概要',
+        nav_contact: 'お問い合わせ',
+        // Hero
+        hero_title_line1: '至高のハワイ体験を、',
+        hero_title_line2: 'あなただけに。',
+        // Service
+        service_title: 'SERVICE',
+        service_subtitle: 'サービス',
+        service1_title: 'オーダーメイドツアー',
+        service1_desc: 'お客様のご要望に合わせ、唯一無二のカスタムメイドツアーを企画。プライベートな観光地巡りから特別なアクティビティまで手配します。',
+        service2_title: 'プライベート送迎',
+        service2_desc: '空港送迎から観光まで、高級車でのプライベート送迎サービス。プライベートジェットやヘリコプターの手配も承ります。',
+        service3_title: '特別予約代行',
+        service3_desc: '予約困難な人気レストランや、プライベートシェフの出張サービス、ゴルフ場の予約まで、お客様に代わって確実にお手配いたします。',
+        // Accommodations
+        accommodations_title: 'ACCOMMODATIONS',
+        accommodations_subtitle: '宿泊施設',
+        room1_occupancy: '大人2名 | 7歳未満のお子様1名',
+        room1_name: 'デラックスルーム',
+        room1_price: '一泊$189から',
+        room2_occupancy: '大人2名 | 7歳未満のお子様1名',
+        room2_name: 'デラックスシービュー',
+        room2_price: '一泊$209から',
+        room3_occupancy: '大人4名 | 7歳未満のお子様2名',
+        room3_name: 'ウェルホール ファミリスイート',
+        room3_price: '一泊$399から',
+        // About
+        about_title: 'ABOUT US',
+        about_subtitle: '私たちについて',
+        about_desc_p1: '私たちは、ハワイでの滞在を最高のものにするためのVIP専門コンシェルジュです。',
+        about_desc_p2: '豊富な知識とネットワークを活かし、お客様一人ひとりの理想を形にする最高級のパーソナルサービスをご提供します。',
+        // Company
+        company_title: 'COMPANY',
+        company_subtitle: '会社概要',
+        company_name_label: '会社名',
+        company_name_value: 'Hawaii VIP Concierge',
+        company_location_label: '所在地',
+        company_location_value: '123 Kalakaua Ave, Honolulu, HI 96815',
+        company_ceo_label: '代表者',
+        company_ceo_value: '山田 太郎',
+        company_business_label: '事業内容',
+        company_business_value: 'VIP向けコンシェルジュサービス',
+        // Contact
+        contact_title: 'CONTACT',
+        contact_subtitle: 'お問い合わせ',
+        contact_desc: 'ご旅行のご相談、特別なご要望など、まずはお気軽にお問い合わせください。',
+        contact_form_name: 'お名前',
+        contact_form_email: 'メールアドレス',
+        contact_form_message: 'メッセージ',
+        contact_form_submit: '送信',
+        // Footer
+        footer_copyright: 'All rights reserved.'
+    }
+};
+
+type Language = 'en' | 'ja';
+
+// --- CUSTOM HOOK for Intersection Observer ---
+const useIntersectionObserver = (options: IntersectionObserverInit) => {
+    const containerRef = useRef<HTMLElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setIsVisible(true);
+                observer.unobserve(entry.target);
+            }
+        }, options);
+
+        const currentRef = containerRef.current;
+        if (currentRef) {
+            observer.observe(currentRef);
+        }
+
+        return () => {
+            if (currentRef) {
+                observer.unobserve(currentRef);
+            }
+        };
+    }, [containerRef, options]);
+
+    return [containerRef, isVisible] as const;
+};
+
+
+// --- UI COMPONENTS ---
+
+const AnimatedSection: React.FC<{ children: React.ReactNode, className?: string, id?: string }> = ({ children, className, id }) => {
+    const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+    return (
+        <section
+            id={id}
+            ref={ref}
+            className={`py-20 md:py-28 px-4 fade-in-section ${isVisible ? 'is-visible' : ''} ${className || ''}`}
+        >
+            {children}
+        </section>
+    );
+};
+
+const Header: React.FC<{ language: Language; setLanguage: (lang: Language) => void; t: (key: string) => string; }> = ({ language, setLanguage, t }) => {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navLinks = [
+        { href: '#service', labelKey: 'nav_service' },
+        { href: '#accommodations', labelKey: 'nav_accommodations' },
+        { href: '#about', labelKey: 'nav_about' },
+        { href: '#company', labelKey: 'nav_company' },
+        { href: '#contact', labelKey: 'nav_contact' },
+    ];
+
+    return (
+        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#F8F5F0]/80 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-20">
+                    <a href="#" className="text-xl sm:text-2xl font-bold text-[#4F463F] tracking-wider">
+                        Hawaii VIP Concierge
+                    </a>
+                    <div className="flex items-center space-x-6">
+                        <nav className="hidden md:flex items-center space-x-8">
+                            {navLinks.map(link => (
+                                <a key={link.href} href={link.href} className="text-sm font-bold text-[#6a5f55] hover:text-[#4F463F] transition-colors relative group">
+                                    {t(link.labelKey)}
+                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#B0926A] transition-all duration-300 group-hover:w-full"></span>
+                                </a>
+                            ))}
+                        </nav>
+                        <button onClick={() => setLanguage(language === 'en' ? 'ja' : 'en')} className="text-sm font-bold text-[#6a5f55] hover:text-[#4F463F] transition-colors">
+                            <span className={language === 'ja' ? 'font-bold text-[#4F463F]' : ''}>JP</span>
+                            <span> / </span>
+                            <span className={language === 'en' ? 'font-bold text-[#4F463F]' : ''}>EN</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    );
+};
+
+const Hero: React.FC<{ t: (key: string) => string; }> = ({ t }) => {
+    return (
+        <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-black/30 z-10"></div>
+            <div
+                className="absolute top-1/2 left-1/2 w-full h-full bg-cover bg-center -translate-x-1/2 -translate-y/1/2 z-0"
+                style={{ backgroundImage: 'url(https://images.pexels.com/photos/1483053/pexels-photo-1483053.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)' }}
+            />
+            <div className="relative z-20 px-4 text-white">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-wider leading-tight hero-text-animation font-serif">
+                    {t('hero_title_line1')}<br />{t('hero_title_line2')}
+                </h1>
+            </div>
+            <div className="scroll-down z-20"></div>
+        </section>
+    );
+};
+
+const SectionTitle: React.FC<{ title: string, subtitle: string }> = ({ title, subtitle }) => (
+    <div className="text-center mb-12 md:mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#4F463F] font-serif">{subtitle}</h2>
+        <p className="text-sm font-bold text-[#B0926A] tracking-widest mt-2">{title}</p>
+    </div>
+);
+
+const ServiceCard: React.FC<{ title: string, description: string }> = ({ title, description }) => (
+    <div className="bg-white/50 p-8 rounded-lg border border-[#e0d6c7] backdrop-blur-sm transition-all duration-300 hover:border-[#B0926A] hover:shadow-xl">
+        <h3 className="text-2xl font-bold text-[#4F463F] mb-3 font-serif">{title}</h3>
+        <p className="text-[#6a5f55]">{description}</p>
+    </div>
+);
+
+const AccommodationCard: React.FC<{ imgSrc: string, occupancy: string, name: string, price: string }> = ({ imgSrc, occupancy, name, price }) => (
+    <div className="flex flex-col">
+        <img src={imgSrc} alt={name} className="w-full h-64 object-cover" />
+        <div className="border-x border-b border-[#C4B7A6] p-6 flex-grow flex flex-col">
+            <p className="text-sm text-[#6a5f55] mb-2">{occupancy}</p>
+            <h3 className="text-2xl font-bold text-[#4F463F] mb-2 font-serif flex-grow">{name}</h3>
+            <p className="text-lg text-[#6a5f55] mt-auto">{price}</p>
+        </div>
+    </div>
+);
+
+const Footer: React.FC<{t: (key: string) => string;}> = ({t}) => (
+    <footer className="bg-[#e9e2d9] border-t border-[#d1c7b8] mt-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-[#6a5f55]">
+            <p className="font-bold text-lg text-[#4F463F] mb-2">Hawaii VIP Concierge</p>
+            <p>&copy; {new Date().getFullYear()} Hawaii VIP Concierge Inc. {t('footer_copyright')}</p>
+        </div>
+    </footer>
+);
+
+const App: React.FC = () => {
+    const [language, setLanguage] = useState<Language>('ja');
+    const t = (key: string) => translations[language][key] || key;
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        // Mock submission
+        console.log({ name, email, message });
+        alert('Thank you for your message!');
+        setName('');
+        setEmail('');
+        setMessage('');
+    };
+    
+    const accommodationsData = [
+      {
+        imgSrc: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        occupancy: t('room1_occupancy'),
+        name: t('room1_name'),
+        price: t('room1_price'),
+      },
+      {
+        imgSrc: 'https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        occupancy: t('room2_occupancy'),
+        name: t('room2_name'),
+        price: t('room2_price'),
+      },
+      {
+        imgSrc: 'https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        occupancy: t('room3_occupancy'),
+        name: t('room3_name'),
+        price: t('room3_price'),
+      },
+    ];
+
+  return (
+    <div className="bg-[#F8F5F0] min-h-screen text-[#4F463F] font-sans">
+      <Header language={language} setLanguage={setLanguage} t={t}/>
+      <main>
+        <Hero t={t}/>
+        
+        <AnimatedSection id="service">
+            <div className="container mx-auto">
+                <SectionTitle title={t('service_subtitle')} subtitle={t('service_title')} />
+                <div className="grid md:grid-cols-3 gap-8">
+                    <ServiceCard title={t('service1_title')} description={t('service1_desc')} />
+                    <ServiceCard title={t('service2_title')} description={t('service2_desc')} />
+                    <ServiceCard title={t('service3_title')} description={t('service3_desc')} />
+                </div>
+            </div>
+        </AnimatedSection>
+
+        <AnimatedSection id="accommodations" className="bg-[#FDFBF8]">
+            <div className="container mx-auto">
+                <SectionTitle title={t('accommodations_subtitle')} subtitle={t('accommodations_title')} />
+                <div className="grid md:grid-cols-3 gap-8">
+                   {accommodationsData.map((room, index) => <AccommodationCard key={index} {...room} />)}
+                </div>
+            </div>
+        </AnimatedSection>
+
+
+        <AnimatedSection id="about">
+            <div className="container mx-auto text-center max-w-4xl">
+                <SectionTitle title={t('about_subtitle')} subtitle={t('about_title')} />
+                <p className="text-lg md:text-xl leading-relaxed text-[#6a5f55]">
+                    {t('about_desc_p1')}<br className="hidden md:block" />
+                    {t('about_desc_p2')}
+                </p>
+            </div>
+        </AnimatedSection>
+
+        <AnimatedSection id="company" className="bg-[#FDFBF8]">
+            <div className="container mx-auto max-w-3xl">
+                <SectionTitle title={t('company_subtitle')} subtitle={t('company_title')} />
+                <div className="bg-white/50 border border-[#e0d6c7] rounded-lg p-8 space-y-4 text-left">
+                    <div className="flex flex-col sm:flex-row border-b border-[#e0d6c7] pb-4">
+                        <dt className="w-full sm:w-1/3 font-bold text-[#6a5f55]">{t('company_name_label')}</dt>
+                        <dd className="w-full sm:w-2/3 mt-1 sm:mt-0">{t('company_name_value')}</dd>
+                    </div>
+                     <div className="flex flex-col sm:flex-row border-b border-[#e0d6c7] pb-4">
+                        <dt className="w-full sm:w-1/3 font-bold text-[#6a5f55]">{t('company_location_label')}</dt>
+                        <dd className="w-full sm:w-2/3 mt-1 sm:mt-0">{t('company_location_value')}</dd>
+                    </div>
+                     <div className="flex flex-col sm:flex-row border-b border-[#e0d6c7] pb-4">
+                        <dt className="w-full sm:w-1/3 font-bold text-[#6a5f55]">{t('company_ceo_label')}</dt>
+                        <dd className="w-full sm:w-2/3 mt-1 sm:mt-0">{t('company_ceo_value')}</dd>
+                    </div>
+                     <div className="flex flex-col sm:flex-row">
+                        <dt className="w-full sm:w-1/3 font-bold text-[#6a5f55]">{t('company_business_label')}</dt>
+                        <dd className="w-full sm:w-2/3 mt-1 sm:mt-0">{t('company_business_value')}</dd>
+                    </div>
+                </div>
+            </div>
+        </AnimatedSection>
+        
+        <AnimatedSection id="contact">
+             <div className="container mx-auto text-center">
+                <SectionTitle title={t('contact_subtitle')} subtitle={t('contact_title')} />
+                <p className="text-lg text-[#6a5f55] mb-8 max-w-2xl mx-auto">
+                    {t('contact_desc')}
+                </p>
+                <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-6 text-left">
+                    <div>
+                        <label htmlFor="name" className="block text-sm font-bold text-[#6a5f55] mb-2">{t('contact_form_name')}</label>
+                        <input
+                            type="text"
+                            id="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                            className="w-full px-4 py-3 bg-white/60 border border-[#e0d6c7] rounded-md focus:ring-2 focus:ring-[#B0926A] focus:border-[#B0926A] outline-none transition-colors"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-bold text-[#6a5f55] mb-2">{t('contact_form_email')}</label>
+                        <input
+                            type="email"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            className="w-full px-4 py-3 bg-white/60 border border-[#e0d6c7] rounded-md focus:ring-2 focus:ring-[#B0926A] focus:border-[#B0926A] outline-none transition-colors"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="message" className="block text-sm font-bold text-[#6a5f55] mb-2">{t('contact_form_message')}</label>
+                        <textarea
+                            id="message"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            required
+                            rows={5}
+                            className="w-full px-4 py-3 bg-white/60 border border-[#e0d6c7] rounded-md focus:ring-2 focus:ring-[#B0926A] focus:border-[#B0926A] outline-none transition-colors"
+                        ></textarea>
+                    </div>
+                    <div className="text-center">
+                        <button type="submit" className="inline-block bg-transparent border-2 border-[#B0926A] text-[#B0926A] font-bold text-lg px-12 py-4 rounded-md transition-all duration-300 hover:bg-[#B0926A] hover:text-white hover:shadow-2xl hover:shadow-amber-500/20">
+                            {t('contact_form_submit')}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </AnimatedSection>
+
+      </main>
+      <Footer t={t} />
+    </div>
+  );
+};
+
+export default App;
