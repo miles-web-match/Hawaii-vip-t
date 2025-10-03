@@ -1,52 +1,63 @@
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Hawaii VIP Concierge</title>
-  <meta name="description" content="Hawaii VIP Concierge — プライベート送迎・予約手配・別荘やラグジュアリー宿泊の手配まで、専属コンシェルジュが上質なハワイ体験をお届けします。" />
-  <link rel="icon" href="/favicon.ico" />
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Hawaii VIP Concierge</title>
+    <meta name="description" content="Hawaii VIP Concierge — プライベート送迎・予約手配・別荘やラグジュアリー宿泊の手配まで、専属コンシェルジュが上質なハワイ体験をお届けします。" />
+    <link rel="icon" href="/favicon.ico" />
 
-  <!-- ✅ ここから追加（OG / Twitter / Canonical / theme-color） -->
-  <meta property="og:title" content="Hawaii VIP Concierge" />
-  <meta property="og:description" content="上質なハワイ体験を専属コンシェルジュが。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://<あなたのドメイン>/" />
-  <meta property="og:image" content="/og.jpg" />
-  <meta property="og:site_name" content="Hawaii VIP Concierge" />
-  <meta property="og:locale" content="ja_JP" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Hawaii VIP Concierge" />
-  <meta name="twitter:description" content="上質なハワイ体験を専属コンシェルジュが。" />
-  <meta name="twitter:image" content="/og.jpg" />
-  <meta name="theme-color" content="#F8F5F0" />
-  <link rel="canonical" href="https://<あなたのドメイン>/" />
-  <!-- ✅ 追加ここまで -->
+    <!-- OG / Twitter / Canonical -->
+    <meta property="og:title" content="Hawaii VIP Concierge" />
+    <meta property="og:description" content="上質なハワイ体験を専属コンシェルジュが。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://<あなたのドメイン>/" />
+    <meta property="og:image" content="/og.jpg" />
+    <meta property="og:site_name" content="Hawaii VIP Concierge" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hawaii VIP Concierge" />
+    <meta name="twitter:description" content="上質なハワイ体験を専属コンシェルジュが。" />
+    <meta name="twitter:image" content="/og.jpg" />
+    <meta name="theme-color" content="#F8F5F0" />
+    <link rel="canonical" href="https://<あなたのドメイン>/" />
 
-  <!-- Tailwind（CDN版のままでOK） -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind（CDN） -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- フォント先読み（表示安定） -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- フォント先読み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:wght@700&display=swap');
 
-    html { scroll-behavior: smooth; }
-    body {
-      background-color: #F8F5F0;
-      font-family: 'Noto Sans JP', sans-serif;
-      color: #4F463F;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      min-height: 100dvh;
-    }
-    .font-serif { font-family: 'Playfair Display', serif; }
-    .hero-text-animation { opacity: 0; animation: fadeInUp 1.5s ease-out 0.5s forwards; }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-    .fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity .8s, transform .8s; }
-    .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
-    .scroll-down { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); width: 24px; height: 40px; border: 2px solid #4F463F; border-radius: 20px; }
-    .scroll-down::before { content: ''; position: absolute; top: 8px; left: 50%; width: 4px; height: 8px; background: #4F463F; border-radius: 2px; animation: scroll-anim 2s infinite; }
-    @keyframes scroll-anim { 0% { transform: translate(-50%, 0); opacity: 0; } 40% { opacity: 1; } 80% { transform: translate(-50%, 12px); opacity: 0; } 100% { opacity: 0; } }
-  </style>
-</head>
+      html { scroll-behavior: smooth; }
+      body {
+        background-color: #F8F5F0;
+        font-family: 'Noto Sans JP', sans-serif;
+        color: #4F463F;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-height: 100dvh;
+      }
+      .font-serif { font-family: 'Playfair Display', serif; }
+      .hero-text-animation { opacity: 0; animation: fadeInUp 1.5s ease-out 0.5s forwards; }
+      @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+      .fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity .8s, transform .8s; }
+      .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+      .scroll-down { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); width: 24px; height: 40px; border: 2px solid #4F463F; border-radius: 20px; }
+      .scroll-down::before { content: ''; position: absolute; top: 8px; left: 50%; width: 4px; height: 8px; background: #4F463F; border-radius: 2px; animation: scroll-anim 2s infinite; }
+      @keyframes scroll-anim { 0% { transform: translate(-50%, 0); opacity: 0; } 40% { opacity: 1; } 80% { transform: translate(-50%, 12px); opacity: 0; } 100% { opacity: 0; } }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- Vite entry -->
+    <script type="module" src="/src/main.tsx"></script>
+
+    <noscript>このサイトを表示するには JavaScript を有効にしてください。</noscript>
+  </body>
+</html>
