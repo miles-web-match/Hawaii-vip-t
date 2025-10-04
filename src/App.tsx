@@ -40,8 +40,21 @@ const en = {
 
   // About
   about_title: 'ABOUT',
-  about_desc:
-    'Our dedicated concierge team creates tailored experiences for discerning travelers seeking the finest in Hawaii.',
+ about_desc_long: `There are unseen pitfalls to living abroad. In Hawaii too, the old belief that “you can trust someone just because they are Japanese” has faded, and unfortunately people sometimes encounter unexpected trouble.
+
+While services in Japanese have increased, prices are often higher than local rates, and the sense of security created by “Japanese-owned, so it's safe” is slipping away. In the U.S., rigorous public review systems such as Yelp matter, yet businesses that market only to Japanese visitors or residents tend not to appear in those arenas.
+
+We face this reality and, together with local experts, provide guidance that values Made in Hawaii. Because we live here and welcome dear friends, we want to introduce not only Japanese-run businesses but also the true charms of Hawaii. Our purpose is to move beyond a Japan-only bubble and to coexist with the local community.
+
+Even school choices can become insular—following where “someone’s child goes” narrows diversity. We also hear of cases where people relied on a Japanese acquaintance they happened to meet, only to encounter problems because that person lacked the necessary knowledge or experience. Goodwill is not the same as expertise, and mistaking one for the other can lead to serious consequences.
+
+At our company, a team handles every case. If an issue arises, we will always find a way forward and take responsibility for guiding our clients. We value organizational reliability and accountability over individual goodwill.
+
+A Japanese government official once remarked that some visitors now “take from Hawaii without remembering gratitude or giving back.” That is why, as people who live here, we act with respect and appreciation for this place.
+
+We have shared tough realities, not to be negative, but because we hope to learn together about the rigor of a different culture—the United States—so that you can grow and build a richer life.
+
+Living in Hawaii is both a challenge and a great joy. We will support that step with sincerity and responsibility.`,
 
   // Company
   company_title: 'COMPANY',
