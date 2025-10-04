@@ -338,7 +338,7 @@ export default function App() {
           {/* 右：写真（角丸なし・四角い縁） */}
           <figure className="border border-[#4F463F]/20 shadow-sm">
             <img
-              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop"
+              src="/about-side.jpg?v=1"
               alt=""
               className="w-full h-full object-cover"
               loading="lazy"
