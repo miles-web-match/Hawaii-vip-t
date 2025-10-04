@@ -227,6 +227,16 @@ function useI18n(lang: Lang) {
 }
 
 /* =========================
+   仕切り（セクション区切りの柔らかいグラデ線）
+========================= */
+const Divider = () => (
+  <div
+    aria-hidden="true"
+    className="h-4 md:h-5 bg-gradient-to-b from-black/10 to-transparent opacity-30"
+  />
+);
+
+/* =========================
    メインコンポーネント
 ========================= */
 export default function App() {
@@ -310,6 +320,9 @@ export default function App() {
         <div className="scroll-down" aria-hidden="true" />
       </section>
 
+      {/* 仕切り */}
+      <Divider />
+
       {/* ------- About ------- */}
       <section id="about" className="mx-auto max-w-6xl px-4 py-24 fade-in-section">
         <h2 className="font-serif text-3xl md:text-4xl mb-3">{t('about_title')}</h2>
@@ -339,7 +352,7 @@ export default function App() {
           <figure className="border border-[#4F463F]/20 shadow-sm">
             <img
               src="/about-side.jpg?v=1"
-              alt=""
+              alt="Founder portrait"
               className="w-full h-full object-cover"
               loading="lazy"
               decoding="async"
@@ -359,47 +372,55 @@ export default function App() {
         </figure>
       </section>
 
-      {/* ------- Service ------- */}
-      <section id="service" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
-        <h2 className="font-serif text-3xl mb-2">{t('service_title')}</h2>
-        <p className="text-sm opacity-70 mb-8">{t('service_subtitle')}</p>
+      {/* 仕切り */}
+      <Divider />
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {([
-            ['svc1_title','svc1_desc'],
-            ['svc2_title','svc2_desc'],
-            ['svc3_title','svc3_desc'],
-            ['svc4_title','svc4_desc'],
-            ['svc5_title','svc5_desc'],
-            ['svc6_title','svc6_desc'],
-          ] as const).map(([ti, de]) => (
-            <article key={ti} className="rounded-2xl bg-white p-6 shadow-sm">
-              <h3 className="font-serif text-xl mb-2">{t(ti)}</h3>
-              <p className="text-sm leading-6">{t(de)}</p>
-            </article>
-          ))}
-        </div>
+      {/* ------- Service（薄ベージュ帯） ------- */}
+      <section className="bg-[#F2ECE3]">
+        <div id="service" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
+          <h2 className="font-serif text-3xl mb-2">{t('service_title')}</h2>
+          <p className="text-sm opacity-70 mb-8">{t('service_subtitle')}</p>
 
-        <p className="text-sm opacity-80 mt-6">{t('service_note_more')}</p>
-
-        {/* Plans */}
-        <div className="mt-12">
-          <h3 className="font-serif text-2xl mb-4">{t('plans_title')}</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {([
-              ['plan_light','plan_price_light'],
-              ['plan_standard','plan_price_standard'],
-              ['plan_premium','plan_price_premium'],
-            ] as const).map(([nameKey, priceKey]) => (
-              <div key={nameKey} className="rounded-2xl bg-white p-6 shadow-sm flex items-center justify-between">
-                <div className="font-serif text-lg">{t(nameKey)}</div>
-                <div className="text-xl font-semibold">{t(priceKey)}</div>
-              </div>
+              ['svc1_title','svc1_desc'],
+              ['svc2_title','svc2_desc'],
+              ['svc3_title','svc3_desc'],
+              ['svc4_title','svc4_desc'],
+              ['svc5_title','svc5_desc'],
+              ['svc6_title','svc6_desc'],
+            ] as const).map(([ti, de]) => (
+              <article key={ti} className="rounded-2xl bg-white p-6 shadow-sm">
+                <h3 className="font-serif text-xl mb-2">{t(ti as Keys)}</h3>
+                <p className="text-sm leading-6">{t(de as Keys)}</p>
+              </article>
             ))}
           </div>
-          <p className="text-xs opacity-70 mt-3">{t('plans_note')}</p>
+
+          <p className="text-sm opacity-80 mt-6">{t('service_note_more')}</p>
+
+          {/* Plans */}
+          <div className="mt-12">
+            <h3 className="font-serif text-2xl mb-4">{t('plans_title')}</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {([
+                ['plan_light','plan_price_light'],
+                ['plan_standard','plan_price_standard'],
+                ['plan_premium','plan_price_premium'],
+              ] as const).map(([nameKey, priceKey]) => (
+                <div key={nameKey} className="rounded-2xl bg-white p-6 shadow-sm flex items-center justify-between">
+                  <div className="font-serif text-lg">{t(nameKey as Keys)}</div>
+                  <div className="text-xl font-semibold">{t(priceKey as Keys)}</div>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs opacity-70 mt-3">{t('plans_note')}</p>
+          </div>
         </div>
       </section>
+
+      {/* 仕切り */}
+      <Divider />
 
       {/* ------- Accommodations ------- */}
       <section id="accommodations" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
@@ -414,14 +435,22 @@ export default function App() {
         </div>
       </section>
 
-      {/* ------- Company ------- */}
-      <section id="company" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
-        <h2 className="font-serif text-3xl mb-4">{t('company_title')}</h2>
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
-          <p className="font-serif text-xl mb-2">{t('company_name')}</p>
-          <p className="leading-7">{t('company_desc')}</p>
+      {/* 仕切り */}
+      <Divider />
+
+      {/* ------- Company（薄ベージュ帯） ------- */}
+      <section className="bg-[#F2ECE3]">
+        <div id="company" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
+          <h2 className="font-serif text-3xl mb-4">{t('company_title')}</h2>
+          <div className="rounded-2xl bg-white p-6 shadow-sm">
+            <p className="font-serif text-xl mb-2">{t('company_name')}</p>
+            <p className="leading-7">{t('company_desc')}</p>
+          </div>
         </div>
       </section>
+
+      {/* 仕切り */}
+      <Divider />
 
       {/* ------- Contact ------- */}
       <section id="contact" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
@@ -458,6 +487,9 @@ export default function App() {
           </div>
         </form>
       </section>
+
+      {/* 仕切り */}
+      <Divider />
 
       {/* Footer */}
       <footer className="border-t">
