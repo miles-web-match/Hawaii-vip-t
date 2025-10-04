@@ -183,15 +183,47 @@ export default function App() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative bg-[url('/hero.jpg')] bg-cover bg-center">
-        <div className="mx-auto max-w-6xl px-4 py-28 md:py-40">
-          <h1 className="hero-text-animation font-serif text-4xl md:text-6xl leading-tight">
-            {t('hero_title_line1')}<br />{t('hero_title_line2')}
-          </h1>
-          <div className="scroll-down" aria-hidden="true" />
-        </div>
-      </section>
+     {/* ------- Hero ------- */}
+<section className="relative min-h-[92vh] md:min-h-screen w-full overflow-hidden">
+  {/* 背景画像（確実に表示させるため <img> で） */}
+  <img
+    src="/hero.jpg"                 // public/hero.jpg
+    alt=""
+    className="absolute inset-0 h-full w-full object-cover object-[center_35%] md:object-center scale-105"
+    loading="eager"
+    fetchPriority="high"
+  />
+
+  {/* 黒フィルター（全体を暗く） */}
+  <div className="absolute inset-0 bg-black/55 md:bg-black/60" />
+
+  {/* 追加のグラデーション（下方向を少し締める） */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/40" />
+
+  {/* コンテンツ */}
+  <div className="relative z-10 mx-auto max-w-6xl px-4 h-full flex flex-col justify-center">
+    {/* 小見出し（任意：サンプルサイト風） */}
+    <p className="uppercase tracking-[0.35em] text-xs md:text-sm text-white/80 mb-4">
+      WELCOME TO
+    </p>
+
+    {/* タイトル（あなたの日本語コピーをそのまま） */}
+    <h1 className="hero-text-animation font-serif text-white drop-shadow-lg leading-[1.08] text-4xl sm:text-5xl md:text-7xl">
+      {t('hero_title_line1')}<br />{t('hero_title_line2')}
+    </h1>
+
+    {/* CTA（色味はサンプル寄せ） */}
+    <a
+      href="#service"
+      className="mt-10 inline-block rounded-xl bg-white/90 text-[#4F463F] px-7 py-3 text-sm font-semibold hover:bg-white hover:shadow-lg transition"
+    >
+      {lang === 'ja' ? '詳しく見る' : 'LEARN MORE'}
+    </a>
+  </div>
+
+  {/* スクロールインジケーター */}
+  <div className="scroll-down" aria-hidden="true" />
+</section>
 
       {/* Service */}
       <section id="service" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
