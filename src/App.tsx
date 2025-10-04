@@ -41,7 +41,7 @@ Some officials have lamented that more visitors “take from Hawaii without grat
 
 We share these realities not to be negative, but to learn together about the rigor of a different culture—the United States—so that you can grow and build a richer life. Living in Hawaii is both a challenge and a great joy. We will support that step with sincerity and responsibility.`,
 
-  // Founder greeting (追加)
+  // Founder greeting
   greeting_title: 'Message from the Founder',
   greeting_name: 'Taro Hawaii',
   greeting_body_long: `I have lived in Hawaii for 30 years. I came here alone for university and, through an internship, entered the travel industry. After switching to a work visa and gaining experience, I became independent 20 years ago. I have challenged many areas—from tour buses and transfers to optional tours and vacation rentals—continuing even through the pandemic with the support of locals and guests.
@@ -55,7 +55,6 @@ One of our signature tours is the Pearl Harbor Historical Tour. We carefully pas
   service_subtitle: 'What We Offer',
   service_note_more:
     'We also arrange professional appointments, immigration support, bespoke tours and golf.',
-
   svc1_title: 'Japanese Support',
   svc1_desc:
     'Bilingual help via LINE/phone/app; translation for documents and daily procedures.',
@@ -145,7 +144,7 @@ const ja: Record<Keys, string> = {
 
 都合の良い話ばかりではなく、異文化である米国の厳しさを共に学び、成長し、より豊かな人生を築いていただきたい――。ハワイで暮らすことは挑戦であり、大きな喜びです。私たちはその一歩を、誠実に、責任をもって支えます。`,
 
-  // Founder greeting（追加）
+  // Founder greeting
   greeting_title: '代表挨拶',
   greeting_name: 'ハワイ太郎',
   greeting_body_long: `私はハワイに暮らして30年になります。留学を目的に単身でハワイの大学へ入学し、学生時代の研修をきっかけに旅行業界に入りました。その後、就労ビザに切り替えて経験を積み、20年前に独立。ツアーバスや送迎車両、オプショナルツアー、民泊事業など、多方面に挑戦しながら今日まで歩んでまいりました。パンデミックという大きな試練もありましたが、地元の方々やお客様に支えられ、事業を続けることができました。
@@ -159,7 +158,6 @@ const ja: Record<Keys, string> = {
   service_subtitle: '提供メニュー',
   service_note_more:
     '弁護士・会計士・銀行など各種アポイント、ビザ/移民手続き、オーダーメイド観光やゴルフ手配も承ります。',
-
   svc1_title: '日本語サポート',
   svc1_desc:
     'LINE・電話・アプリでの日本語＋現地語対応、各種書類や手続きの翻訳・通訳。',
@@ -278,9 +276,8 @@ export default function App() {
         </div>
       </header>
 
-      {/* ------- Hero（全面＋黒フィルター＋中央） ------- */}
+      {/* ------- Hero ------- */}
       <section className="relative h-screen w-full overflow-hidden">
-        {/* 背景画像（public/hero.jpg） */}
         <img
           src="/hero.jpg"
           alt=""
@@ -288,9 +285,7 @@ export default function App() {
           loading="eager"
           fetchPriority="high"
         />
-        {/* 黒いオーバーレイ */}
         <div className="absolute inset-0 bg-black bg-opacity-60" />
-        {/* 下方向のグラデ（inline） */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -298,7 +293,6 @@ export default function App() {
               'linear-gradient(to bottom, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.35) 100%)',
           }}
         />
-        {/* コンテンツ（中央寄せ） */}
         <div className="relative z-10 h-full max-w-5xl mx-auto px-4 flex flex-col items-center justify-center text-center">
           <p className="uppercase tracking-widest text-xs md:text-sm text-white/80 mb-4">
             WELCOME TO
@@ -316,7 +310,7 @@ export default function App() {
         <div className="scroll-down" aria-hidden="true" />
       </section>
 
-      {/* ------- About（ヒーロー直下：まず「弊社の思い」→ 代表挨拶のレイアウト） ------- */}
+      {/* ------- About ------- */}
       <section id="about" className="mx-auto max-w-6xl px-4 py-24 fade-in-section">
         <h2 className="font-serif text-3xl md:text-4xl mb-3">{t('about_title')}</h2>
         <p className="opacity-80 mb-8">{t('about_desc')}</p>
@@ -328,9 +322,9 @@ export default function App() {
             .map((p, i) => <p key={i}>{p.trim()}</p>)}
         </div>
 
-        {/* 代表挨拶：左テキスト／右写真 → 下に額縁写真 */}
-        <div className="grid md:grid-cols-[1.2fr_1fr] gap-10 items-start mb-14">
-          {/* 左：代表挨拶本文 */}
+        {/* 代表挨拶：下端を揃える（md以上で items-end） */}
+        <div className="grid md:grid-cols-[1.2fr_1fr] gap-10 items-start md:items-end mb-14">
+          {/* 左：本文 */}
           <div>
             <h3 className="font-serif text-2xl md:text-3xl mb-3">{t('greeting_title')}</h3>
             <p className="text-sm opacity-70 mb-4">{t('greeting_name')}</p>
@@ -341,8 +335,8 @@ export default function App() {
             </div>
           </div>
 
-          {/* 右：小さめ写真（ダミー画像。あとで /about-side.jpg に差し替え） */}
-          <figure className="rounded-2xl overflow-hidden border border-[#4F463F]/20 shadow-sm">
+          {/* 右：写真（角丸なし・四角い縁） */}
+          <figure className="border border-[#4F463F]/20 shadow-sm">
             <img
               src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop"
               alt=""
@@ -353,19 +347,19 @@ export default function App() {
           </figure>
         </div>
 
-        {/* 下：額縁付きの大写真（ダミー。あとで /about-wide.jpg に差し替え） */}
-        <figure className="border-2 border-[#4F463F]/30 p-2 rounded-xl">
+        {/* 下：額縁付きの大写真（角丸なし） */}
+        <figure className="border-2 border-[#4F463F]/30 p-2">
           <img
             src="https://images.unsplash.com/photo-1501117716987-c8e3f1d6e8d6?q=80&w=1600&auto=format&fit=crop"
             alt=""
-            className="w-full h-auto rounded-lg object-cover"
+            className="w-full h-auto object-cover"
             loading="lazy"
             decoding="async"
           />
         </figure>
       </section>
 
-      {/* ------- Service（以前のまま） ------- */}
+      {/* ------- Service ------- */}
       <section id="service" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
         <h2 className="font-serif text-3xl mb-2">{t('service_title')}</h2>
         <p className="text-sm opacity-70 mb-8">{t('service_subtitle')}</p>
@@ -407,7 +401,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ------- Accommodations（以前のまま） ------- */}
+      {/* ------- Accommodations ------- */}
       <section id="accommodations" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
         <h2 className="font-serif text-3xl mb-2">{t('accommodations_title')}</h2>
         <p className="text-sm opacity-70 mb-8">{t('accommodations_subtitle')}</p>
@@ -420,7 +414,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ------- Company（以前のまま） ------- */}
+      {/* ------- Company ------- */}
       <section id="company" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
         <h2 className="font-serif text-3xl mb-4">{t('company_title')}</h2>
         <div className="rounded-2xl bg-white p-6 shadow-sm">
@@ -429,7 +423,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ------- Contact（以前のまま） ------- */}
+      {/* ------- Contact ------- */}
       <section id="contact" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
         <h2 className="font-serif text-3xl mb-2">{t('contact_title')}</h2>
         <p className="text-sm opacity-70 mb-8">{t('contact_subtitle')}</p>
@@ -465,7 +459,7 @@ export default function App() {
         </form>
       </section>
 
-      {/* Footer（以前のまま） */}
+      {/* Footer */}
       <footer className="border-t">
         <div className="mx-auto max-w-6xl px-4 py-8 text-sm flex flex-col md:flex-row items-center justify-between gap-3">
           <div>{t('footer_copyright')}</div>
