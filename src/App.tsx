@@ -16,56 +16,80 @@ const en = {
   nav_company: 'COMPANY',
   nav_contact: 'CONTACT',
 
+  // Brand
+  brand: 'Kokualoha',
+
   // Hero
   hero_title_line1: 'The Ultimate Hawaii Experience,',
   hero_title_line2: 'Exclusively for You.',
 
+  // About (short + long)
+  about_title: 'ABOUT US',
+  about_desc:
+    'We provide reliable, locally rooted concierge support in Hawaii with a focus on “Made in Hawaii.”',
+  about_desc_long: `There are unseen pitfalls to living abroad. In Hawaii too, the old notion that “you can trust someone just because they are Japanese” has faded, and people sometimes face unexpected problems.
+
+While Japanese-language services have increased, prices are often higher than local rates, and the sense of safety from “Japanese-owned, so it's fine” is slipping away. In the U.S., rigorous public review systems such as Yelp matter, yet businesses that serve only Japanese customers tend not to appear in those arenas.
+
+We face this reality and, together with local experts, guide guests with respect for what is authentically Made in Hawaii. Because we live here and welcome dear friends, we introduce not only Japanese-run businesses but also the true charms of Hawaii. Our aim is to move beyond a Japan-only bubble and coexist with the local community.
+
+Even school choices can become insular—following where “someone’s child goes” narrows diversity. There are also cases where people rely on a Japanese acquaintance they happened to meet, only to encounter trouble due to insufficient knowledge or experience. Goodwill is not the same as expertise, and mistaking one for the other can have serious consequences.
+
+At Kokualoha, a team handles each case. If an issue arises, we find a way forward and take responsibility for our guests—valuing organizational reliability and accountability over individual goodwill.
+
+Some officials have lamented that more visitors “take from Hawaii without gratitude or giving back.” As people who live here, we continue our work with respect and appreciation for this place.
+
+We share these realities not to be negative, but to learn together about the rigor of a different culture—the United States—so that you can grow and build a richer life. Living in Hawaii is both a challenge and a great joy. We will support that step with sincerity and responsibility.`,
+
   // Service
   service_title: 'SERVICE',
-  service_subtitle: 'Our Services',
-  service1_title: 'Bespoke Tours',
-  service1_desc:
-    'We design one-of-a-kind custom tours tailored to your desires, from private sightseeing to special activities.',
-  service2_title: 'Private Transport',
-  service2_desc:
-    'Luxury private transport for airport transfers and sightseeing. Private jets and helicopters can also be arranged.',
-  service3_title: 'VIP Reservations',
-  service3_desc:
-    'We secure bookings at popular restaurants, arrange private chefs, and reserve golf courses.',
+  service_subtitle: 'What We Offer',
+  service_note_more:
+    'We also arrange professional appointments, immigration support, bespoke tours and golf.',
+
+  svc1_title: 'Japanese Support',
+  svc1_desc:
+    'Bilingual help via LINE/phone/app; translation for documents and daily procedures.',
+  svc2_title: 'Medical Support',
+  svc2_desc:
+    'Introduce Japanese-speaking doctors, make appointments, accompany as interpreter.',
+  svc3_title: 'Loss & Theft Assistance',
+  svc3_desc:
+    'Guide passport/credit reissue and embassy contact; support police procedures.',
+  svc4_title: 'Legal Consultation',
+  svc4_desc:
+    'Connect you with attorneys; explain cultural/legal differences and next steps.',
+  svc5_title: 'Home & Vehicle Care',
+  svc5_desc:
+    'House/vehicle check, airport pickup, bill payment, mail check—before/after stays.',
+  svc6_title: 'Utilities & IDs',
+  svc6_desc:
+    'Open utilities/mobile, state certificates, driver’s license, SSN procedures.',
+
+  // Plans (simple highlight)
+  plans_title: 'MEMBERSHIP',
+  plan_light: 'Light (one-time)',
+  plan_standard: 'Standard (6 months)',
+  plan_premium: 'Premium (1 year)',
+  plan_price_light: '$20',
+  plan_price_standard: '$200',
+  plan_price_premium: '$380',
+  plans_note:
+    'Membership enables us to act on your behalf during trouble; case-by-case fees may apply.',
 
   // Accommodations
   accommodations_title: 'ACCOMMODATIONS',
-  accommodations_subtitle: 'Curated Stays for Your Comfort',
-
-  // About
-  about_title: 'ABOUT',
-  about_desc:
-    'Our dedicated concierge team creates tailored experiences for discerning travelers seeking the finest in Hawaii.',
-  about_desc_long: `There are unseen pitfalls to living abroad. In Hawaii too, the old belief that “you can trust someone just because they are Japanese” has faded, and unfortunately people sometimes encounter unexpected trouble.
-
-While services in Japanese have increased, prices are often higher than local rates, and the sense of security created by “Japanese-owned, so it's safe” is slipping away. In the U.S., rigorous public review systems such as Yelp matter, yet businesses that market only to Japanese visitors or residents tend not to appear in those arenas.
-
-We face this reality and, together with local experts, provide guidance that values Made in Hawaii. Because we live here and welcome dear friends, we want to introduce not only Japanese-run businesses but also the true charms of Hawaii. Our purpose is to move beyond a Japan-only bubble and to coexist with the local community.
-
-Even school choices can become insular—following where “someone’s child goes” narrows diversity. We also hear of cases where people relied on a Japanese acquaintance they happened to meet, only to encounter problems because that person lacked the necessary knowledge or experience. Goodwill is not the same as expertise, and mistaking one for the other can lead to serious consequences.
-
-At our company, a team handles every case. If an issue arises, we will always find a way forward and take responsibility for guiding our clients. We value organizational reliability and accountability over individual goodwill.
-
-A Japanese government official once remarked that some visitors now “take from Hawaii without remembering gratitude or giving back.” That is why, as people who live here, we act with respect and appreciation for this place.
-
-We share these realities not to be negative, but because we hope to learn together about the rigor of a different culture—the United States—so that you can grow and build a richer life.
-
-Living in Hawaii is both a challenge and a great joy. We will support that step with sincerity and responsibility.`,
+  accommodations_subtitle: 'Curated stays — coming soon',
 
   // Company
   company_title: 'COMPANY',
-  company_name: 'Milztech Inc.',
+  company_name: 'Kokualoha',
   company_desc:
-    'We provide premium travel coordination and concierge services for VIP guests visiting the Hawaiian islands.',
+    'Concierge & coordination for residents, investors and travelers — rooted in Hawaii.',
 
   // Contact
   contact_title: 'CONTACT',
-  contact_subtitle: 'Tell us your ideal Hawaii stay',
+  contact_subtitle: 'Tell us your ideal stay or concern',
   contact_name: 'Name',
   contact_email: 'Email',
   contact_phone: 'Phone',
@@ -74,7 +98,7 @@ Living in Hawaii is both a challenge and a great joy. We will support that step 
 
   // Footer
   footer_rights: 'All Rights Reserved.',
-  footer_copyright: '© Hawaii VIP Concierge',
+  footer_copyright: '© Kokualoha',
 } as const;
 
 type Keys = keyof typeof en;
@@ -87,56 +111,80 @@ const ja: Record<Keys, string> = {
   nav_company: '会社情報',
   nav_contact: 'お問い合わせ',
 
+  // Brand
+  brand: 'コクアロハ',
+
   // Hero
   hero_title_line1: '究極のハワイ体験を、',
   hero_title_line2: 'あなただけに。',
 
-  // Service
-  service_title: 'サービス',
-  service_subtitle: '提供メニュー',
-  service1_title: 'オーダーメイドツアー',
-  service1_desc:
-    '観光から特別アクティビティまで、ご希望に合わせて唯一無二のプランを設計します。',
-  service2_title: '専用送迎',
-  service2_desc:
-    '空港送迎や観光にラグジュアリーな専用車をご用意。プライベートジェットやヘリの手配も可能です。',
-  service3_title: 'VIP予約手配',
-  service3_desc:
-    '人気店の予約確保、プライベートシェフの手配、ゴルフコースの確保など、特別な時間をお約束します。',
-
-  // Accommodations
-  accommodations_title: '宿泊',
-  accommodations_subtitle: '厳選された滞在先',
-
   // About
   about_title: '私たちについて',
   about_desc:
-    '上質な体験を求めるお客様のために、専属コンシェルジュが最適なプランをオーダーメイドでご提案します。',
+    'Made in Hawaii を大切に、現地に根差した信頼できるコンシェルジュサポートをご提供します。',
   about_desc_long: `海外生活には、見えない落とし穴が存在します。ここハワイでも、かつては「日本人だから安心できる」という信頼がありましたが、残念ながら今はその神話が崩れ、思わぬ被害に遭うケースが少なくありません。
 
-日本語でのサービスは増えましたが、料金はローカルより高く、さらに「日本人が経営しているから大丈夫」という安心感も失われつつあります。実際、アメリカ社会では Yelp などの口コミによる厳しい評価が重視される一方で、日本人向けにのみ営業しているお店や企業は、そうした公的な評価の場に現れにくいのが現状です。
+日本語でのサービスは増えましたが、料金はローカルより高く、「日本人が経営しているから大丈夫」という安心感も薄れつつあります。アメリカ社会では Yelp などの厳しい口コミ評価が重視される一方、日本人向けにのみ営業する事業者は、そうした公的な評価の場に現れにくいのが現状です。
 
-私たちはその状況を直視し、ローカルの専門家と共に、Made in Hawaii を大切にしたご案内を行っています。ハワイに住むからこそ、そして大切な友人を迎えるからこそ、日本人経営のお店だけでなく、本当のハワイの魅力を紹介したい。それが私たちの願いであり、目的は「日本人だけの世界からの脱却」と「現地社会との共生」です。
+私たちはこの現実を直視し、ローカルの専門家と共に、本当に価値のある “Made in Hawaii” を大切にしたご案内を行っています。ここに暮らし、友人を迎える立場だからこそ、日本人経営のお店だけでなく、ハワイ本来の魅力をご紹介したい。目的は「日本人だけの世界からの脱却」と「現地社会との共生」です。
 
-実際、学校ひとつをとっても「○○ちゃんが行くから」という理由で同じコミュニティーに偏り、結果的に多様性を失う例もあります。また、「たまたま知り合った在住日本人に頼んだら、知識も経験も十分でなく、トラブルに…」というケースも多発しています。人の良さと専門性は別物であり、それを見誤ることで取り返しのつかない結果を招くこともあるのです。
+学校選びひとつでも「○○ちゃんが行くから」と同質化が進み、多様性を失う例があります。たまたま知り合った在住日本人に頼み、知識や経験不足からトラブルになるケースも少なくありません。人の善意と専門性は別物であり、見誤ると深刻な結果につながり得ます。
 
-弊社では、一つの案件をチームで遂行し、問題があれば必ず打開策を見つけ、責任をもってお客様をご案内します。個人の善意に頼るのではなく、組織としての信頼と責任を重視しています。
+コクアロハでは、一つの案件をチームで遂行します。問題があれば必ず打開策を見つけ、責任をもってご案内します。個人の善意に頼るのではなく、組織としての信頼と責任を重視します。
 
-ある日本政府関係者も「最近のハワイは、利用するだけで、感謝や還元を忘れてしまう日本人が増えている」と語っていました。だからこそ、私たちはこの地に住む者として、ハワイへの敬意と感謝を忘れずに活動してまいります。
+「最近はハワイに感謝や還元を忘れてしまう日本人が増えた」との声も耳にします。だからこそ、この地に生きる者として、敬意と感謝を忘れずに活動を続けます。
 
-確かに、ここまで多くの現実をお伝えしました。しかし私たちは、ただ都合の良い話を並べるのではなく、アメリカという異なる文化の厳しさを共に学びながら、成長し、より豊かな人生を築いていただきたいと願っています。
+都合の良い話ばかりではなく、異文化である米国の厳しさを共に学び、成長し、より豊かな人生を築いていただきたい――。ハワイで暮らすことは挑戦であり、大きな喜びです。私たちはその一歩を、誠実に、責任をもって支えます。`,
 
-ハワイに暮らすことは、挑戦であり、そして大きな喜びです。私たちはその一歩を、誠実に、責任を持って支えてまいります。`,
+  // Service
+  service_title: 'サービス',
+  service_subtitle: '提供メニュー',
+  service_note_more:
+    '弁護士・会計士・銀行など各種アポイント、ビザ/移民手続き、オーダーメイド観光やゴルフ手配も承ります。',
+
+  svc1_title: '日本語サポート',
+  svc1_desc:
+    'LINE・電話・アプリでの日本語＋現地語対応、各種書類や手続きの翻訳・通訳。',
+  svc2_title: '医療サポート',
+  svc2_desc:
+    '日本語対応医師のご紹介・予約、必要に応じて同行や通訳も対応。',
+  svc3_title: '紛失・盗難時の支援',
+  svc3_desc:
+    'パスポート/カード再発行、在外公館や警察手続きのサポート。',
+  svc4_title: '法律相談',
+  svc4_desc:
+    '弁護士のご紹介、文化・法律の違いの解説、対応方針の整理。',
+  svc5_title: '住まい・車の管理',
+  svc5_desc:
+    'お部屋・車の点検、空港送迎、公共料金や郵便の確認など滞在前後のケア。',
+  svc6_title: '公共料金・ID手続き',
+  svc6_desc:
+    '通信/水道/電気の開設、州の証明書、運転免許・SSN 取得の支援。',
+
+  // Plans
+  plans_title: '会員プラン',
+  plan_light: 'ライト（1回のみ）',
+  plan_standard: 'スタンダード（6ヶ月）',
+  plan_premium: 'プレミアム（1年）',
+  plan_price_light: '$20',
+  plan_price_standard: '$200',
+  plan_price_premium: '$380',
+  plans_note:
+    'トラブル時の身元引受・各種対応のため会員登録が必要です。個別案件は内容に応じて別料金。',
+
+  // Accommodations
+  accommodations_title: '宿泊',
+  accommodations_subtitle: '厳選ステイ（近日公開）',
 
   // Company
   company_title: '会社情報',
-  company_name: 'Milztech株式会社',
+  company_name: 'コクアロハ',
   company_desc:
-    'ハワイにお越しになるVIPゲストのための旅程調整・コンシェルジュサービスを提供しています。',
+    '居住者・投資家・旅行者のための現地密着コンシェルジュ／コーディネーション。',
 
   // Contact
   contact_title: 'お問い合わせ',
-  contact_subtitle: '理想のハワイ滞在をお聞かせください',
+  contact_subtitle: '理想の滞在やお困りごとをお聞かせください',
   contact_name: 'お名前',
   contact_email: 'メールアドレス',
   contact_phone: '電話番号',
@@ -145,7 +193,7 @@ const ja: Record<Keys, string> = {
 
   // Footer
   footer_rights: 'All Rights Reserved.',
-  footer_copyright: '© Hawaii VIP Concierge',
+  footer_copyright: '© コクアロハ',
 };
 
 const translations: Record<Lang, Record<Keys, string>> = {
@@ -187,7 +235,7 @@ export default function App() {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-[#F8F5F0]/80 backdrop-blur">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <div className="font-serif text-xl">Hawaii VIP</div>
+          <div className="font-serif text-xl">{t('brand')}</div>
           <nav className="hidden md:flex gap-6 text-sm">
             <a className="hover:opacity-70" href="#service">{t('nav_service')}</a>
             <a className="hover:opacity-70" href="#accommodations">{t('nav_accommodations')}</a>
@@ -250,9 +298,10 @@ export default function App() {
         <div className="scroll-down" aria-hidden="true" />
       </section>
 
-      {/* ------- About（ヒーロー直下に最初に表示） ------- */}
+      {/* ------- About（ヒーロー直下） ------- */}
       <section id="about" className="mx-auto max-w-6xl px-4 py-24 fade-in-section">
-        <h2 className="font-serif text-3xl md:text-4xl mb-6">{t('about_title')}</h2>
+        <h2 className="font-serif text-3xl md:text-4xl mb-3">{t('about_title')}</h2>
+        <p className="opacity-80 mb-8">{t('about_desc')}</p>
         <div className="space-y-4 text-[15px] md:text-base leading-8 text-[#4F463F]">
           {t('about_desc_long')
             .split(/\n{2,}/)
@@ -260,28 +309,49 @@ export default function App() {
         </div>
       </section>
 
-      {/* Service */}
+      {/* ------- Service ------- */}
       <section id="service" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
         <h2 className="font-serif text-3xl mb-2">{t('service_title')}</h2>
         <p className="text-sm opacity-70 mb-8">{t('service_subtitle')}</p>
 
         <div className="grid md:grid-cols-3 gap-6">
-          <article className="rounded-2xl bg-white p-6 shadow-sm">
-            <h3 className="font-serif text-xl mb-2">{t('service1_title')}</h3>
-            <p className="text-sm leading-6">{t('service1_desc')}</p>
-          </article>
-          <article className="rounded-2xl bg-white p-6 shadow-sm">
-            <h3 className="font-serif text-xl mb-2">{t('service2_title')}</h3>
-            <p className="text-sm leading-6">{t('service2_desc')}</p>
-          </article>
-          <article className="rounded-2xl bg-white p-6 shadow-sm">
-            <h3 className="font-serif text-xl mb-2">{t('service3_title')}</h3>
-            <p className="text-sm leading-6">{t('service3_desc')}</p>
-          </article>
+          {[
+            ['svc1_title','svc1_desc'],
+            ['svc2_title','svc2_desc'],
+            ['svc3_title','svc3_desc'],
+            ['svc4_title','svc4_desc'],
+            ['svc5_title','svc5_desc'],
+            ['svc6_title','svc6_desc'],
+          ].map(([ti, de]) => (
+            <article key={ti} className="rounded-2xl bg-white p-6 shadow-sm">
+              <h3 className="font-serif text-xl mb-2">{t(ti as Keys)}</h3>
+              <p className="text-sm leading-6">{t(de as Keys)}</p>
+            </article>
+          ))}
+        </div>
+
+        <p className="text-sm opacity-80 mt-6">{t('service_note_more')}</p>
+
+        {/* Plans */}
+        <div className="mt-12">
+          <h3 className="font-serif text-2xl mb-4">{t('plans_title')}</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              ['plan_light','plan_price_light'],
+              ['plan_standard','plan_price_standard'],
+              ['plan_premium','plan_price_premium'],
+            ].map(([nameKey, priceKey]) => (
+              <div key={nameKey} className="rounded-2xl bg-white p-6 shadow-sm flex items-center justify-between">
+                <div className="font-serif text-lg">{t(nameKey as Keys)}</div>
+                <div className="text-xl font-semibold">{t(priceKey as Keys)}</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs opacity-70 mt-3">{t('plans_note')}</p>
         </div>
       </section>
 
-      {/* Accommodations */}
+      {/* ------- Accommodations ------- */}
       <section id="accommodations" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
         <h2 className="font-serif text-3xl mb-2">{t('accommodations_title')}</h2>
         <p className="text-sm opacity-70 mb-8">{t('accommodations_subtitle')}</p>
@@ -294,7 +364,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Company */}
+      {/* ------- Company ------- */}
       <section id="company" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
         <h2 className="font-serif text-3xl mb-4">{t('company_title')}</h2>
         <div className="rounded-2xl bg-white p-6 shadow-sm">
@@ -303,7 +373,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Contact */}
+      {/* ------- Contact ------- */}
       <section id="contact" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
         <h2 className="font-serif text-3xl mb-2">{t('contact_title')}</h2>
         <p className="text-sm opacity-70 mb-8">{t('contact_subtitle')}</p>
