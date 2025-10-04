@@ -219,13 +219,26 @@ function useI18n(lang: Lang) {
 }
 
 /* =========================
-   仕切り（セクション区切りの柔らかいグラデ線）
+   柔らかいグラデ区切り線
 ========================= */
 const Divider = () => (
-  <div
-    aria-hidden="true"
-    className="h-4 md:h-5 bg-gradient-to-b from-black/10 to-transparent opacity-30"
-  />
+  <div aria-hidden="true" className="h-4 md:h-5 bg-gradient-to-b from-black/10 to-transparent opacity-30" />
+);
+
+/* =========================
+   背景色つきセクションのラッパー
+========================= */
+type BandProps = {
+  tone?: 'base' | 'tint';
+  id?: string;
+  children: React.ReactNode;
+};
+const Band: React.FC<BandProps> = ({ tone = 'base', id, children }) => (
+  <section className={tone === 'tint' ? 'bg-[#F2ECE3]' : ''}>
+    <div id={id} className="mx-auto max-w-6xl px-4 py-24 fade-in-section scroll-mt-24">
+      {children}
+    </div>
+  </section>
 );
 
 /* =========================
@@ -278,7 +291,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* ------- Hero ------- */}
+      {/* ------- Hero（全面） ------- */}
       <section className="relative h-screen w-full overflow-hidden">
         <img
           src="/hero.jpg"
@@ -290,15 +303,10 @@ export default function App() {
         <div className="absolute inset-0 bg-black bg-opacity-60" />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.35) 100%)',
-          }}
+          style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.35) 100%)' }}
         />
         <div className="relative z-10 h-full max-w-5xl mx-auto px-4 flex flex-col items-center justify-center text-center">
-          <p className="uppercase tracking-widest text-xs md:text-sm text-white/80 mb-4">
-            WELCOME TO
-          </p>
+          <p className="uppercase tracking-widest text-xs md:text-sm text-white/80 mb-4">WELCOME TO</p>
           <h1 className="hero-text-animation font-serif text-white drop-shadow leading-tight text-4xl sm:text-5xl md:text-7xl">
             {t('hero_title_line1')}<br />{t('hero_title_line2')}
           </h1>
@@ -312,22 +320,15 @@ export default function App() {
         <div className="scroll-down" aria-hidden="true" />
       </section>
 
-      {/* 仕切り */}
       <Divider />
 
-      {/* ------- About ------- */}
-      <section id="about" className="mx-auto max-w-6xl px-4 py-24 fade-in-section">
+      {/* ------- About（通常） ------- */}
+      <Band id="about" tone="base">
         <h2 className="font-serif text-3xl md:text-4xl mb-3">{t('about_title')}</h2>
         <p className="opacity-80 mb-8">{t('about_desc')}</p>
-
-        {/* 弊社の思い（長文） */}
         <div className="space-y-4 text-[15px] md:text-base leading-8 text-[#4F463F]">
-          {t('about_desc_long')
-            .split(/\n{2,}/)
-            .map((p, i) => <p key={i}>{p.trim()}</p>)}
+          {t('about_desc_long').split(/\n{2,}/).map((p, i) => <p key={i}>{p.trim()}</p>)}
         </div>
-
-        {/* 大きめの額縁写真（雰囲気づくり用） */}
         <figure className="mt-12 border-2 border-[#4F463F]/30 p-2">
           <img
             src="https://images.unsplash.com/photo-1501117716987-c8e3f1d6e8d6?q=80&w=1600&auto=format&fit=crop"
@@ -337,26 +338,20 @@ export default function App() {
             decoding="async"
           />
         </figure>
-      </section>
+      </Band>
 
-      {/* 仕切り */}
       <Divider />
 
-      {/* ------- Greeting（独立セクション） ------- */}
-      <section id="greeting" className="mx-auto max-w-6xl px-4 py-24 fade-in-section">
+      {/* ------- Greeting（薄ベージュ） ------- */}
+      <Band id="greeting" tone="tint">
         <div className="grid md:grid-cols-[1.2fr_1fr] gap-10 items-start md:items-end">
-          {/* 左：本文 */}
           <div>
             <h2 className="font-serif text-3xl md:text-4xl mb-3">{t('greeting_title')}</h2>
             <p className="text-sm opacity-70 mb-4">{t('greeting_name')}</p>
             <div className="space-y-4 text-[15px] md:text-base leading-8">
-              {t('greeting_body_long')
-                .split(/\n{2,}/)
-                .map((p, i) => <p key={i}>{p.trim()}</p>)}
+              {t('greeting_body_long').split(/\n{2,}/).map((p, i) => <p key={i}>{p.trim()}</p>)}
             </div>
           </div>
-
-          {/* 右：写真（角丸なし・四角い縁） */}
           <figure className="border border-[#4F463F]/20 shadow-sm">
             <img
               src="/about-side.jpg?v=1"
@@ -367,74 +362,66 @@ export default function App() {
             />
           </figure>
         </div>
-      </section>
+      </Band>
 
-      {/* 仕切り */}
       <Divider />
 
-      {/* ------- Service（薄ベージュ帯） ------- */}
-      <section className="bg-[#F2ECE3]">
-        <div id="service" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
-          <h2 className="font-serif text-3xl mb-2">{t('service_title')}</h2>
-          <p className="text-sm opacity-70 mb-8">{t('service_subtitle')}</p>
+      {/* ------- Service（通常） ------- */}
+      <Band id="service" tone="base">
+        <h2 className="font-serif text-3xl mb-2">{t('service_title')}</h2>
+        <p className="text-sm opacity-70 mb-8">{t('service_subtitle')}</p>
 
+        <div className="grid md:grid-cols-3 gap-6">
+          {([
+            ['svc1_title','svc1_desc'],
+            ['svc2_title','svc2_desc'],
+            ['svc3_title','svc3_desc'],
+            ['svc4_title','svc4_desc'],
+            ['svc5_title','svc5_desc'],
+            ['svc6_title','svc6_desc'],
+          ] as const).map(([ti, de]) => (
+            <article key={ti} className="rounded-2xl bg-white p-6 shadow-sm">
+              <h3 className="font-serif text-xl mb-2">{t(ti as Keys)}</h3>
+              <p className="text-sm leading-6">{t(de as Keys)}</p>
+            </article>
+          ))}
+        </div>
+
+        <p className="text-sm opacity-80 mt-6">{t('service_note_more')}</p>
+
+        <div className="mt-12">
+          <h3 className="font-serif text-2xl mb-4">{t('plans_title')}</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {([
-              ['svc1_title','svc1_desc'],
-              ['svc2_title','svc2_desc'],
-              ['svc3_title','svc3_desc'],
-              ['svc4_title','svc4_desc'],
-              ['svc5_title','svc5_desc'],
-              ['svc6_title','svc6_desc'],
-            ] as const).map(([ti, de]) => (
-              <article key={ti} className="rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="font-serif text-xl mb-2">{t(ti as Keys)}</h3>
-                <p className="text-sm leading-6">{t(de as Keys)}</p>
-              </article>
+              ['plan_light','plan_price_light'],
+              ['plan_standard','plan_price_standard'],
+              ['plan_premium','plan_price_premium'],
+            ] as const).map(([nameKey, priceKey]) => (
+              <div key={nameKey} className="rounded-2xl bg-white p-6 shadow-sm flex items-center justify-between">
+                <div className="font-serif text-lg">{t(nameKey as Keys)}</div>
+                <div className="text-xl font-semibold">{t(priceKey as Keys)}</div>
+              </div>
             ))}
           </div>
-
-          <p className="text-sm opacity-80 mt-6">{t('service_note_more')}</p>
-
-          {/* Plans */}
-          <div className="mt-12">
-            <h3 className="font-serif text-2xl mb-4">{t('plans_title')}</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              {([
-                ['plan_light','plan_price_light'],
-                ['plan_standard','plan_price_standard'],
-                ['plan_premium','plan_price_premium'],
-              ] as const).map(([nameKey, priceKey]) => (
-                <div key={nameKey} className="rounded-2xl bg-white p-6 shadow-sm flex items-center justify-between">
-                  <div className="font-serif text-lg">{t(nameKey as Keys)}</div>
-                  <div className="text-xl font-semibold">{t(priceKey as Keys)}</div>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs opacity-70 mt-3">{t('plans_note')}</p>
-          </div>
+          <p className="text-xs opacity-70 mt-3">{t('plans_note')}</p>
         </div>
-      </section>
+      </Band>
 
-      {/* 仕切り */}
       <Divider />
 
-      {/* ------- Company（薄ベージュ帯） ------- */}
-      <section className="bg-[#F2ECE3]">
-        <div id="company" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
-          <h2 className="font-serif text-3xl mb-4">{t('company_title')}</h2>
-          <div className="rounded-2xl bg-white p-6 shadow-sm">
-            <p className="font-serif text-xl mb-2">{t('company_name')}</p>
-            <p className="leading-7">{t('company_desc')}</p>
-          </div>
+      {/* ------- Company（薄ベージュ） ------- */}
+      <Band id="company" tone="tint">
+        <h2 className="font-serif text-3xl mb-4">{t('company_title')}</h2>
+        <div className="rounded-2xl bg-white p-6 shadow-sm">
+          <p className="font-serif text-xl mb-2">{t('company_name')}</p>
+          <p className="leading-7">{t('company_desc')}</p>
         </div>
-      </section>
+      </Band>
 
-      {/* 仕切り */}
       <Divider />
 
-      {/* ------- Contact ------- */}
-      <section id="contact" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
+      {/* ------- Contact（通常） ------- */}
+      <Band id="contact" tone="base">
         <h2 className="font-serif text-3xl mb-2">{t('contact_title')}</h2>
         <p className="text-sm opacity-70 mb-8">{t('contact_subtitle')}</p>
 
@@ -467,9 +454,8 @@ export default function App() {
             </button>
           </div>
         </form>
-      </section>
+      </Band>
 
-      {/* 仕切り */}
       <Divider />
 
       {/* Footer */}
