@@ -6,8 +6,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 type Lang = 'ja' | 'en';
 
 /* =========================
-   翻訳辞書（型安全）
-   - 英語を基準にキー型を生成
+   翻訳辞書（英語を基準にキー型を生成）
 ========================= */
 const en = {
   // Header
@@ -40,7 +39,9 @@ const en = {
 
   // About
   about_title: 'ABOUT',
- about_desc_long: `There are unseen pitfalls to living abroad. In Hawaii too, the old belief that “you can trust someone just because they are Japanese” has faded, and unfortunately people sometimes encounter unexpected trouble.
+  about_desc:
+    'Our dedicated concierge team creates tailored experiences for discerning travelers seeking the finest in Hawaii.',
+  about_desc_long: `There are unseen pitfalls to living abroad. In Hawaii too, the old belief that “you can trust someone just because they are Japanese” has faded, and unfortunately people sometimes encounter unexpected trouble.
 
 While services in Japanese have increased, prices are often higher than local rates, and the sense of security created by “Japanese-owned, so it's safe” is slipping away. In the U.S., rigorous public review systems such as Yelp matter, yet businesses that market only to Japanese visitors or residents tend not to appear in those arenas.
 
@@ -52,7 +53,7 @@ At our company, a team handles every case. If an issue arises, we will always fi
 
 A Japanese government official once remarked that some visitors now “take from Hawaii without remembering gratitude or giving back.” That is why, as people who live here, we act with respect and appreciation for this place.
 
-We have shared tough realities, not to be negative, but because we hope to learn together about the rigor of a different culture—the United States—so that you can grow and build a richer life.
+We share these realities not to be negative, but because we hope to learn together about the rigor of a different culture—the United States—so that you can grow and build a richer life.
 
 Living in Hawaii is both a challenge and a great joy. We will support that step with sincerity and responsibility.`,
 
@@ -110,7 +111,22 @@ const ja: Record<Keys, string> = {
   // About
   about_title: '私たちについて',
   about_desc:
-    'ラグジュアリーなハワイ滞在を求める方に、専属コンシェルジュが最適な体験をオーダーメイドでご提案します。',
+    '上質な体験を求めるお客様のために、専属コンシェルジュが最適なプランをオーダーメイドでご提案します。',
+  about_desc_long: `海外生活には、見えない落とし穴が存在します。ここハワイでも、かつては「日本人だから安心できる」という信頼がありましたが、残念ながら今はその神話が崩れ、思わぬ被害に遭うケースが少なくありません。
+
+日本語でのサービスは増えましたが、料金はローカルより高く、さらに「日本人が経営しているから大丈夫」という安心感も失われつつあります。実際、アメリカ社会では Yelp などの口コミによる厳しい評価が重視される一方で、日本人向けにのみ営業しているお店や企業は、そうした公的な評価の場に現れにくいのが現状です。
+
+私たちはその状況を直視し、ローカルの専門家と共に、Made in Hawaii を大切にしたご案内を行っています。ハワイに住むからこそ、そして大切な友人を迎えるからこそ、日本人経営のお店だけでなく、本当のハワイの魅力を紹介したい。それが私たちの願いであり、目的は「日本人だけの世界からの脱却」と「現地社会との共生」です。
+
+実際、学校ひとつをとっても「○○ちゃんが行くから」という理由で同じコミュニティーに偏り、結果的に多様性を失う例もあります。また、「たまたま知り合った在住日本人に頼んだら、知識も経験も十分でなく、トラブルに…」というケースも多発しています。人の良さと専門性は別物であり、それを見誤ることで取り返しのつかない結果を招くこともあるのです。
+
+弊社では、一つの案件をチームで遂行し、問題があれば必ず打開策を見つけ、責任をもってお客様をご案内します。個人の善意に頼るのではなく、組織としての信頼と責任を重視しています。
+
+ある日本政府関係者も「最近のハワイは、利用するだけで、感謝や還元を忘れてしまう日本人が増えている」と語っていました。だからこそ、私たちはこの地に住む者として、ハワイへの敬意と感謝を忘れずに活動してまいります。
+
+確かに、ここまで多くの現実をお伝えしました。しかし私たちは、ただ都合の良い話を並べるのではなく、アメリカという異なる文化の厳しさを共に学びながら、成長し、より豊かな人生を築いていただきたいと願っています。
+
+ハワイに暮らすことは、挑戦であり、そして大きな喜びです。私たちはその一歩を、誠実に、責任を持って支えてまいります。`,
 
   // Company
   company_title: '会社情報',
@@ -196,54 +212,53 @@ export default function App() {
         </div>
       </header>
 
-{/* ------- Hero ------- */}
-<section className="relative h-screen w-full overflow-hidden">
-  {/* 背景画像（確実に表示するため <img> を使用） */}
-  <img
-    src="/hero.jpg"    // public/hero.jpg
-    alt=""
-    className="absolute inset-0 h-full w-full object-cover"
-    loading="eager"
-    fetchPriority="high"
-  />
+      {/* ------- Hero（全面＋黒フィルター＋中央） ------- */}
+      <section className="relative h-screen w-full overflow-hidden">
+        {/* 背景画像（public/hero.jpg） */}
+        <img
+          src="/hero.jpg"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+        />
+        {/* 黒いオーバーレイ（CDNでも確実に効く） */}
+        <div className="absolute inset-0 bg-black bg-opacity-60" />
+        {/* 下方向のグラデ（inlineで確実に） */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.35) 100%)',
+          }}
+        />
+        {/* コンテンツ（中央寄せ） */}
+        <div className="relative z-10 h-full max-w-5xl mx-auto px-4 flex flex-col items-center justify-center text-center">
+          <p className="uppercase tracking-widest text-xs md:text-sm text-white/80 mb-4">
+            WELCOME TO
+          </p>
+          <h1 className="hero-text-animation font-serif text-white drop-shadow leading-tight text-4xl sm:text-5xl md:text-7xl">
+            {t('hero_title_line1')}<br />{t('hero_title_line2')}
+          </h1>
+          <a
+            href="#service"
+            className="mt-10 inline-block rounded-xl bg-white text-[#4F463F] px-7 py-3 text-sm font-semibold hover:shadow-lg transition"
+          >
+            {lang === 'ja' ? '詳しく見る' : 'LEARN MORE'}
+          </a>
+        </div>
+        <div className="scroll-down" aria-hidden="true" />
+      </section>
 
-  {/* 黒いオーバーレイ（CDNでも確実に効く書き方） */}
-  <div className="absolute inset-0 bg-black bg-opacity-60" />
-
-  {/* 追加の下方向グラデ（inline style で確実に） */}
-  <div
-    className="absolute inset-0 pointer-events-none"
-    style={{
-      background:
-        'linear-gradient(to bottom, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.35) 100%)',
-    }}
-  />
-
-  {/* コンテンツ（中央寄せ） */}
-  <div className="relative z-10 h-full max-w-5xl mx-auto px-4
-                  flex flex-col items-center justify-center text-center">
-    {/* サブ見出し（任意） */}
-    <p className="uppercase tracking-[0.35em] text-xs md:text-sm text-white/80 mb-4">
-      WELCOME TO
-    </p>
-
-    {/* タイトル（中央） */}
-    <h1 className="hero-text-animation font-serif text-white drop-shadow
-                   leading-tight text-4xl sm:text-5xl md:text-7xl">
-      {t('hero_title_line1')}<br />{t('hero_title_line2')}
-    </h1>
-
-    {/* CTA */}
-    <a
-      href="#service"
-      className="mt-10 inline-block rounded-xl bg-white text-[#4F463F]
-                 px-7 py-3 text-sm font-semibold hover:shadow-lg transition"
-    >
-      {lang === 'ja' ? '詳しく見る' : 'LEARN MORE'}
-    </a>
-  </div>
-</section>
-
+      {/* ------- About（ヒーロー直下に最初に表示） ------- */}
+      <section id="about" className="mx-auto max-w-6xl px-4 py-24 fade-in-section">
+        <h2 className="font-serif text-3xl md:text-4xl mb-6">{t('about_title')}</h2>
+        <div className="space-y-4 text-[15px] md:text-base leading-8 text-[#4F463F]">
+          {t('about_desc_long')
+            .split(/\n{2,}/)
+            .map((p, i) => <p key={i}>{p.trim()}</p>)}
+        </div>
+      </section>
 
       {/* Service */}
       <section id="service" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
@@ -277,12 +292,6 @@ export default function App() {
             </article>
           ))}
         </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
-        <h2 className="font-serif text-3xl mb-4">{t('about_title')}</h2>
-        <p className="leading-7">{t('about_desc')}</p>
       </section>
 
       {/* Company */}
