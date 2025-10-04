@@ -11,8 +11,8 @@ type Lang = 'ja' | 'en';
 const en = {
   // Header
   nav_service: 'SERVICE',
-  nav_accommodations: 'ACCOMMODATIONS',
   nav_about: 'ABOUT US',
+  nav_greeting: 'GREETING',
   nav_company: 'COMPANY',
   nav_contact: 'CONTACT',
 
@@ -41,7 +41,7 @@ Some officials have lamented that more visitors “take from Hawaii without grat
 
 We share these realities not to be negative, but to learn together about the rigor of a different culture—the United States—so that you can grow and build a richer life. Living in Hawaii is both a challenge and a great joy. We will support that step with sincerity and responsibility.`,
 
-  // Founder greeting
+  // Founder greeting (separate section)
   greeting_title: 'Message from the Founder',
   greeting_name: 'Taro Hawaii',
   greeting_body_long: `I have lived in Hawaii for 30 years. I came here alone for university and, through an internship, entered the travel industry. After switching to a work visa and gaining experience, I became independent 20 years ago. I have challenged many areas—from tour buses and transfers to optional tours and vacation rentals—continuing even through the pandemic with the support of locals and guests.
@@ -85,10 +85,6 @@ One of our signature tours is the Pearl Harbor Historical Tour. We carefully pas
   plans_note:
     'Membership enables us to act on your behalf during trouble; case-by-case fees may apply.',
 
-  // Accommodations
-  accommodations_title: 'ACCOMMODATIONS',
-  accommodations_subtitle: 'Curated stays — coming soon',
-
   // Company
   company_title: 'COMPANY',
   company_name: 'Kokualoha',
@@ -114,8 +110,8 @@ type Keys = keyof typeof en;
 const ja: Record<Keys, string> = {
   // Header
   nav_service: 'サービス',
-  nav_accommodations: '宿泊',
   nav_about: '私たちについて',
+  nav_greeting: '代表挨拶',
   nav_company: '会社情報',
   nav_contact: 'お問い合わせ',
 
@@ -144,7 +140,7 @@ const ja: Record<Keys, string> = {
 
 都合の良い話ばかりではなく、異文化である米国の厳しさを共に学び、成長し、より豊かな人生を築いていただきたい――。ハワイで暮らすことは挑戦であり、大きな喜びです。私たちはその一歩を、誠実に、責任をもって支えます。`,
 
-  // Founder greeting
+  // Founder greeting（独立セクション）
   greeting_title: '代表挨拶',
   greeting_name: 'ハワイ太郎',
   greeting_body_long: `私はハワイに暮らして30年になります。留学を目的に単身でハワイの大学へ入学し、学生時代の研修をきっかけに旅行業界に入りました。その後、就労ビザに切り替えて経験を積み、20年前に独立。ツアーバスや送迎車両、オプショナルツアー、民泊事業など、多方面に挑戦しながら今日まで歩んでまいりました。パンデミックという大きな試練もありましたが、地元の方々やお客様に支えられ、事業を続けることができました。
@@ -187,10 +183,6 @@ const ja: Record<Keys, string> = {
   plan_price_premium: '$380',
   plans_note:
     'トラブル時の身元引受・各種対応のため会員登録が必要です。個別案件は内容に応じて別料金。',
-
-  // Accommodations
-  accommodations_title: '宿泊',
-  accommodations_subtitle: '厳選ステイ（近日公開）',
 
   // Company
   company_title: '会社情報',
@@ -264,8 +256,8 @@ export default function App() {
           <div className="font-serif text-xl">{t('brand')}</div>
           <nav className="hidden md:flex gap-6 text-sm">
             <a className="hover:opacity-70" href="#service">{t('nav_service')}</a>
-            <a className="hover:opacity-70" href="#accommodations">{t('nav_accommodations')}</a>
             <a className="hover:opacity-70" href="#about">{t('nav_about')}</a>
+            <a className="hover:opacity-70" href="#greeting">{t('nav_greeting')}</a>
             <a className="hover:opacity-70" href="#company">{t('nav_company')}</a>
             <a className="hover:opacity-70" href="#contact">{t('nav_contact')}</a>
           </nav>
@@ -329,17 +321,33 @@ export default function App() {
         <p className="opacity-80 mb-8">{t('about_desc')}</p>
 
         {/* 弊社の思い（長文） */}
-        <div className="space-y-4 text-[15px] md:text-base leading-8 text-[#4F463F] mb-14">
+        <div className="space-y-4 text-[15px] md:text-base leading-8 text-[#4F463F]">
           {t('about_desc_long')
             .split(/\n{2,}/)
             .map((p, i) => <p key={i}>{p.trim()}</p>)}
         </div>
 
-        {/* 代表挨拶：下端を揃える（md以上で items-end） */}
-        <div className="grid md:grid-cols-[1.2fr_1fr] gap-10 items-start md:items-end mb-14">
+        {/* 大きめの額縁写真（雰囲気づくり用） */}
+        <figure className="mt-12 border-2 border-[#4F463F]/30 p-2">
+          <img
+            src="https://images.unsplash.com/photo-1501117716987-c8e3f1d6e8d6?q=80&w=1600&auto=format&fit=crop"
+            alt=""
+            className="w-full h-auto object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </section>
+
+      {/* 仕切り */}
+      <Divider />
+
+      {/* ------- Greeting（独立セクション） ------- */}
+      <section id="greeting" className="mx-auto max-w-6xl px-4 py-24 fade-in-section">
+        <div className="grid md:grid-cols-[1.2fr_1fr] gap-10 items-start md:items-end">
           {/* 左：本文 */}
           <div>
-            <h3 className="font-serif text-2xl md:text-3xl mb-3">{t('greeting_title')}</h3>
+            <h2 className="font-serif text-3xl md:text-4xl mb-3">{t('greeting_title')}</h2>
             <p className="text-sm opacity-70 mb-4">{t('greeting_name')}</p>
             <div className="space-y-4 text-[15px] md:text-base leading-8">
               {t('greeting_body_long')
@@ -359,17 +367,6 @@ export default function App() {
             />
           </figure>
         </div>
-
-        {/* 下：額縁付きの大写真（角丸なし） */}
-        <figure className="border-2 border-[#4F463F]/30 p-2">
-          <img
-            src="https://images.unsplash.com/photo-1501117716987-c8e3f1d6e8d6?q=80&w=1600&auto=format&fit=crop"
-            alt=""
-            className="w-full h-auto object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
       </section>
 
       {/* 仕切り */}
@@ -416,22 +413,6 @@ export default function App() {
             </div>
             <p className="text-xs opacity-70 mt-3">{t('plans_note')}</p>
           </div>
-        </div>
-      </section>
-
-      {/* 仕切り */}
-      <Divider />
-
-      {/* ------- Accommodations ------- */}
-      <section id="accommodations" className="mx-auto max-w-6xl px-4 py-20 fade-in-section">
-        <h2 className="font-serif text-3xl mb-2">{t('accommodations_title')}</h2>
-        <p className="text-sm opacity-70 mb-8">{t('accommodations_subtitle')}</p>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[1, 2, 3].map(n => (
-            <article key={n} className="rounded-2xl bg-white p-6 shadow-sm h-40 flex items-center justify-center opacity-70">
-              Coming soon
-            </article>
-          ))}
         </div>
       </section>
 
